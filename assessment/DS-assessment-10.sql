@@ -1,0 +1,1 @@
+SELECT * FROM invoice WHERE Billingcity IN ('Brasilia', 'Edmonton', 'Vancouver') ORDER BY InvoiceId DESC
