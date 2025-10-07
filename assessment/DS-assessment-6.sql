@@ -1,0 +1,1 @@
+SELECT * FROM customer WHERE state IN ('RJ', 'DF', 'AB', 'BC', 'WA', 'NY')
