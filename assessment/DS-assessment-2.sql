@@ -1,0 +1,1 @@
+SELECT Firstname, LastName, BirthDate, Address, City, State from Employee
