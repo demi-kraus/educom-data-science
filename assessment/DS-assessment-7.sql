@@ -1,0 +1,1 @@
+SELECT * FROM invoice WHERE customerID in (56, 58) AND total BETWEEN 1 AND 5
