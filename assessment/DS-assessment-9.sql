@@ -1,0 +1,1 @@
+SELECT * FROM customer WHERE email LIKE 'j%@gmail.com'
