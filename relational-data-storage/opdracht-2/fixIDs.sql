@@ -55,5 +55,7 @@ CALL fill_missing_ids('mhl_suppliers_mhl_rubriek_view','mhl_rubrieken', 'mhl_rub
 --
 CALL mismatching_ids('mhl_rubrieken','mhl_rubrieken', 'parent');
 CALL fill_missing_ids('mhl_rubrieken','mhl_rubrieken', 'parent');
-
+--
+CALL mismatching_ids('mhl_suppliers','mhl_cities', 'p_city_id');
+CALL fill_missing_ids('mhl_suppliers','mhl_cities', 'p_city_id');
 
