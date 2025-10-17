@@ -1,7 +1,4 @@
 
-SELECT * FROM v_directie;
-SELECT * FROM v_verzendlijst;
-
 SELECT 
 	supplier.name,
     IFNULL(v_directie.contact, 't.a.v. directie') as contact,
