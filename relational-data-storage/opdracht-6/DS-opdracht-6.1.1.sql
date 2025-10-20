@@ -15,7 +15,7 @@ UNION SELECT 12,'December';
 SELECT 
 	h.year,
     m.name,
-	COUNT(h.supplier_ID) as 'aantal leveranciers',
+	COUNT(h.supplier_ID) as 'aantal leveranciers',		
     SUM(h.hitcount) as 'totaal aantal hits'
 FROM mhl_hitcount AS h
 JOIN v_months as m ON h.month = m.id
