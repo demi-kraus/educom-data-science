@@ -8,4 +8,4 @@ SELECT
 FROM mhl_suppliers as supplier
 LEFT JOIN v_directie ON supplier.id = v_directie.suppplier
 LEFT JOIN v_verzendlijst ON supplier.id = v_verzendlijst.id
-WHERE name IS NOT NULL
+WHERE name IS NOT NULL              
