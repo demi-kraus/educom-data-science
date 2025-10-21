@@ -1,0 +1,30 @@
+{
+  "continent": "Africa",
+  "bvd2022": 1426730932,
+  "bvd1970": 365444348
+}
+{
+  "continent": "Asia",
+  "bvd2022": 4721383274,
+  "bvd1970": 2144906290
+}
+{
+  "continent": "Europe",
+  "bvd2022": 743147538,
+  "bvd1970": 655923991
+}
+{
+  "continent": "North America",
+  "bvd2022": 600296136,
+  "bvd1970": 315434606
+}
+{
+  "continent": "Oceania",
+  "bvd2022": 45038554,
+  "bvd1970": 19480270
+}
+{
+  "continent": "South America",
+  "bvd2022": 436816608,
+  "bvd1970": 192947156
+}
