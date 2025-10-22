@@ -8908,6 +8908,16 @@ Output:
 
 ```
 
+#### Opdracht 6
+Command:
+```
+
+```
+Output:
+```json
+
+```
+
 #### Opdracht 
 Command:
 ```
