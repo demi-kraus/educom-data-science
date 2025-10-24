@@ -6,4 +6,4 @@ class Person:
         self.name = name
         self.age = age
         self.city = city
-        print(self.id, self.name, self.age, self.city)
+        

@@ -21,7 +21,8 @@ def read_csv(path:str)-> list:
     return rows
 
 def parse_record(row):
-    Person(row['id'], row['name'], row['age'], row['city'])
+    p = Person(row['id'], row['name'], row['age'], row['city'])
+    print(p.id, p.name, p.age, p.city)
 
 
 def main():
