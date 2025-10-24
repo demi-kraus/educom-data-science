@@ -1,5 +1,6 @@
 import csv
 import sys
+from person import Person
 
 def get_path() ->str:
     try:
@@ -9,7 +10,6 @@ def get_path() ->str:
 
 def read_csv(path:str)-> list:
     rows = []
-    path = "test.csv"
     try:
         with open(path, mode='r') as csv_file:
             reader = csv.DictReader(csv_file, delimiter=',')
@@ -20,11 +20,15 @@ def read_csv(path:str)-> list:
     
     return rows
 
+def parse_record(row):
+    Person(row['id'], row['name'], row['age'], row['city'])
+
+
 def main():
     path = get_path()
     csv_content = read_csv(path)
-    for i in csv_content:
-        print(i)
+    for c in csv_content:
+        parse_record(c)
 
 if __name__ == "__main__":
     main()
