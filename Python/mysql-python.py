@@ -1,6 +1,8 @@
 from mysql.connector import connect
 from typing import List
 from person import Person 
+from car import Car
+import readjson
 
 def get_connection():
     db_connection = connect(
@@ -26,13 +28,61 @@ def get_persons(db_connection) ->List[Person]:
     db_cursor.close()
     return persons
 
-def print_persons(persons):
+def print_persons(persons :list ):
     for p in persons:
         print(p.id, p.name, p.age, p.city)
+        
+def add_or_update_object_to_db(object: object, db_connection) -> object:
+
+    db_cursor = db_connection.cursor()
+    table_name = type(object).__name__.lower()
+    object_dict = object.__dict__
+    values = []
+    cols = []
+
+    if object.id:
+        for k,v in object_dict.items():
+            if k !="id":
+                cols.append(str(k) +"=%s ")
+                values.append(v)
+        query = "UPDATE "+ table_name +" SET " + ", ".join(cols) + "WHERE id=" + str(object_dict["id"])
+    else:
+        s = []
+        for k,v in object_dict.items():
+            if k!="id":
+                cols.append(str(k))
+                values.append(v)
+                s.append("%s")
+        query = "INSERT INTO "+ table_name +  " (" + ", ".join(cols) +") VALUES (" +",".join(s) +")"
+
+    print(query)
+    print(values)
+    db_cursor.execute(query, values)
+
+    object.id = 1
+    if not object.id:
+        object.id = db_cursor.lastrowid
+
+    db_connection.commit()
+    db_cursor.close()
+    
+    return object
+
+def get_persons_from_json() :
+    return readjson.main()
 
 def main():
-    persons = get_persons(get_connection())
-    print_persons(persons)
+    db_connection = get_connection()
+    # persons = get_persons(get_connection())
+    # print_persons(persons)
+    P = Person(name = "Sophie", age = 60, city ="Stein")
+    C = Car(brand="BMW", color="pink")
+    add_or_update_object_to_db(C, db_connection)    
+
+    # persons = get_persons_from_json()
+    # for P in persons:
+    #     print(P.__dict__)
+    #     add_or_update_object_to_db(P, db_connection)
 
 if __name__ == "__main__":
     main()

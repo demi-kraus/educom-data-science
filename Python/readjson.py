@@ -5,7 +5,8 @@ from readcsv import parse_record
 from readtext import get_path 
 
 def read_json(file_path:str) ->list:
-    
+
+
     try:
         with open(file_path, mode='r') as json_file:
             data = json.load(json_file)
@@ -21,13 +22,12 @@ def main():
     path = get_path()
     data = read_json(path)
     objects = []
+
     for r in data:
         r = {k.lower() : v for k,v in r.items()}
         objects.append(parse_record(r))
 
-    print(objects) 
     return objects
     
-
 if __name__ =="__main__":
     main()

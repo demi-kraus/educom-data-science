@@ -35,7 +35,6 @@ def main(path='', objects = []):
 
     if not path:
         path = get_path()
-        
     succes = write_csv(path, objects)
 
     if succes:
