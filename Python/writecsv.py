@@ -1,13 +1,8 @@
 import csv
 import sys
 from person import Person
+from readtext import get_path 
 
-def get_path() -> str:
-    try:
-        return sys.argv[1]
-    except IndexError:
-        return ''
-    
 def write_csv(file_path:str, objects:list[object]) ->bool:
 
     if len(objects) < 1:
@@ -31,14 +26,18 @@ def write_csv(file_path:str, objects:list[object]) ->bool:
     
     return False
 
-def main():
-    P1 = Person(1, "demi", 25, "stein")
-    P2 = Person(2, "Nikki", 22, "stein")
-    P3 = Person(3, "Daphne", 20, "stein")
-    persons = [P1, P2, P3]
+def main(path='', objects = []):
+    if not objects:
+        P1 = Person(1, "demi", 25, "stein")
+        P2 = Person(2, "Nikki", 22, "stein")
+        P3 = Person(3, "Daphne", 20, "stein")
+        objects = [P1, P2, P3]
 
-    path = get_path()
-    succes = write_csv(path, persons)
+    if not path:
+        path = get_path()
+        
+    succes = write_csv(path, objects)
+
     if succes:
         print('Persons succesfully added to csv file')
     else:

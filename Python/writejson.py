@@ -12,14 +12,22 @@ def write_json(file_path:str, items:list) -> bool:
     
     return False
 
-def main():
-    P1 = Person(1, "demi", 25, "stein")
-    P2 = Person(2, "Nikki", 22, "stein")
-    P3 = Person(3, "Daphne", 20, "stein")
-    items = [P1,P2,P3]
-    items = [k.__dict__ for k in items ]
-    path = get_path()
-    write_json(path, items)
+def main(path = '', objects = []):
+    if not objects:
+        P1 = Person(1, "demi", 25, "stein")
+        P2 = Person(2, "Nikki", 22, "stein")
+        P3 = Person(3, "Daphne", 20, "stein")
+        objects = [P1, P2, P3]
+    if not path:
+        path = get_path()
+
+    items = [k.__dict__ for k in objects ]
+    succes = write_json(path, items)
+
+    if succes:
+        print('Persons succesfully added to json file')
+    else:
+        print('Failed to write persons to json file')
 
 if __name__ =="__main__":
     main()

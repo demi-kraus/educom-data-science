@@ -20,10 +20,11 @@ def write_content(content: str) -> bool:
 def main():
     content = get_content()
     succes = write_content(content)
+    path = get_path()
     if succes:
-        print("written text to file", get_path())
+        print("written text to file", path )
     else:
-        print("Failed to write text to file", get_path())
+        print("Failed to write text to file", path)
     
 if __name__ == "__main__":
     main()
