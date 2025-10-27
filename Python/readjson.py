@@ -2,13 +2,8 @@ import json
 import sys
 import person
 from readcsv import parse_record
+from readtext import get_path 
 
-def get_path() ->str:
-    try:
-        return sys.argv[1]
-    except IndexError:
-        return ''
-    
 def read_json(file_path:str) ->list:
     
     try:

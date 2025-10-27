@@ -1,16 +1,12 @@
 import sys 
+from readtext import get_path 
+
 def get_content() -> str:
     try:
         return sys.argv[2]
     except IndexError:
         return ''
     
-def get_path() -> str:
-    try:
-        return sys.argv[1]
-    except IndexError:
-        return ''
-
 def write_content(content: str) -> bool:
     path = get_path()
     try:

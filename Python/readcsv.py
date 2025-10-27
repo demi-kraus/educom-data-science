@@ -1,12 +1,7 @@
 import csv
 import sys
 from person import Person
-
-def get_path() ->str:
-    try:
-        return sys.argv[1]
-    except IndexError:
-        return ''
+from readtext import get_path 
 
 def read_csv(path:str)-> list:
     rows = []
