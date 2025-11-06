@@ -8,7 +8,7 @@ from globaltemperaturesbycountry as a
 left join country as b
 on a.country = b.name;
 
-select * from globaltempcountry;
+select * from globaltempcountry ;
 
 -- create globaltempstate
 select * from globaltemperaturesbystate;
@@ -27,6 +27,7 @@ select * from globaltemperaturesbymajorcity;
 
 drop table globaltempmajorcity;
 
+
 create table globaltempmajorcity as
 select A.id, A.dt, A.averagetemperature, A.averagetemperatureuncertainty, B.id as city_id, A.latitude, A.longitude
 from globaltemperaturesbymajorcity as A
@@ -42,7 +43,16 @@ select * from globaltemperaturesbycity where city_id IS NOT NULL;
 select COUNT(*) from globaltemperaturesbycity where city_id IS NULL;
 
 -- RUn call city_table in command line unil there city_id is set in every row. 
--- CALL city_table;
+ALTER TABLE globaltemperaturesbycity add column city_id int;
+-- MUST INDEX BEFORE CALLING TABLES
+ALTER TABLE city ADD INDEX idx_name (name);
+ALTER TABLE globaltemperaturesbycity ADD INDEX idx_city (city), ALGORITHM=INPLACE;
+
+CALL city_table;
+
+ALTER TABLE city DROP INDEX idx_name;
+ALTER TABLE globaltemperaturesbycity DROP INDEX idx_city;
+        
 ALTER TABLE globaltemperaturesbycity DROP COLUMN city;
 ALTER TABLE globaltemperaturesbycity DROP COLUMN country;
 ALTER TABLE globaltemperaturesbycity RENAME globaltempcity;

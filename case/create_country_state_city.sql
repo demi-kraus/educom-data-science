@@ -9,6 +9,7 @@ SELECT DISTINCT country FROM globaltemperaturesbycountry;
 
 SELECT * FROM country;
 
+
 -- create table state
 CREATE TABLE state (
 	id INT AUTO_INCREMENT NOT NULL,

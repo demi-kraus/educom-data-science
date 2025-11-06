@@ -7,21 +7,21 @@ BEGIN
     DECLARE batchnr INT DEFAULT 0;
     
 	SET SQL_SAFE_UPDATES = 0;
-    SET SESSION net_read_timeout = 600;
 	WHILE rowcount > 0 DO
 		UPDATE globaltemperaturesbycity as a
 		JOIN city as b ON a.city = b.name
 		SET a.city_id = b.id
 		WHERE a.city_id IS NULL
-		LIMIT 10000;
+		LIMIT 100000;
         
         SET rowcount = ROW_COUNT();
 		-- show message
-        SELECT CONCAT('Updated rows in this batch (',batchnr,':', rowcount) AS message;
+        SELECT CONCAT('Updated rows in this batch ',batchnr,':', rowcount) AS message;
         SET batchnr = batchnr + 1;
 	END WHILE;
     SET SQL_SAFE_UPDATES = 1;
 END &&
     
 DELIMITER ;
-SHOW CREATE PROCEDURE city_table      
+SHOW CREATE PROCEDURE city_table    ; 
+
